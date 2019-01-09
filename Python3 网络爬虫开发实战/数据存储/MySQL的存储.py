@@ -12,7 +12,7 @@ import pymysql
 # 创建表
 import pymysql
 
-db = pymysql.connect(host='localhost', user='root', password='199541466', port=3306, db='spiders')
+db = pymysql.connect(host='localhost', user='root', password='', port=3306, db='spiders')
 cursor = db.cursor()
 sql = 'CREATE TABLE IF NOT EXISTS students (id VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL,age INT NOT NULL,PRIMARY KEY (id))'
 cursor.execute(sql)
@@ -25,7 +25,7 @@ id = '20120001'
 user = 'Bob'
 age = 20
 
-db = pymysql.connect(host='localhost',user='root',password='199541466',port=3306,db='spiders')
+db = pymysql.connect(host='localhost',user='root',password='',port=3306,db='spiders')
 cursor = db.cursor()
 sql = 'INSERT INTO students(id, name, age) values(%s,%s,%s)'
 try:
@@ -44,7 +44,7 @@ data  = {
 table = 'students'
 keys = ','.join(data.keys())
 values = ','.join(['%s'] * len(data))
-db = pymysql.connect(host='localhost',user='root',password='199541466',port=3306,db='spiders')
+db = pymysql.connect(host='localhost',user='root',password='',port=3306,db='spiders')
 cursor = db.cursor()
 sql = 'INSERT INTO {table}({keys}) VALUES ({values})'.format(table=table, keys=keys, values=values)
 try:
@@ -57,7 +57,7 @@ except:
 db.close()
 
 # 更新数据
-db = pymysql.connect(host='localhost',user='root',password='199541466',port=3306,db='spiders')
+db = pymysql.connect(host='localhost',user='root',password='',port=3306,db='spiders')
 cursor = db.cursor()
 sql = 'UPDATE students SET age = %s WHERE name = %s'
 try:
@@ -81,7 +81,7 @@ sql = 'INSERT INTO {table}({keys}) values ({values}) ON DUPLICATE KEY UPDATE'.fo
 update = ','.join([' {key} = %s'.format(key=key) for key in data] )
 sql += update
 
-db = pymysql.connect(host='localhost',user='root',password='199541466',port=3306,db='spiders')
+db = pymysql.connect(host='localhost',user='root',password='',port=3306,db='spiders')
 cursor = db.cursor()
 try:
     if cursor.execute(sql,tuple(data.values())*2):
@@ -99,7 +99,7 @@ condition = 'age<20'
 
 
 sql = 'DELETE FROM {table} WHERE {condition}'.format(table=table,condition=condition)
-db = pymysql.connect(host='localhost',user='root',password='199541466',port=3306,db='spiders')
+db = pymysql.connect(host='localhost',user='root',password='',port=3306,db='spiders')
 cursor = db.cursor()
 try:
     cursor.execute(sql)
@@ -110,7 +110,7 @@ db.close()
 
 # 查询数据
 sql = 'SELECT * FROM students WHERE age >= 20'
-db = pymysql.connect(host='localhost',user='root',password='199541466',port=3306,db='spiders')
+db = pymysql.connect(host='localhost',user='root',password='',port=3306,db='spiders')
 cursor = db.cursor()
 try:
     cursor.execute(sql)
@@ -127,7 +127,7 @@ except:
 
 # 逐条获取
 sql = 'SELECT * FROM students WHERE age >= 20'
-db = pymysql.connect(host='localhost',user='root',password='199541466',port=3306,db='spiders')
+db = pymysql.connect(host='localhost',user='root',password='',port=3306,db='spiders')
 cursor = db.cursor()
 try:
     cursor.execute(sql)
