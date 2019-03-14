@@ -1,7 +1,7 @@
 import pymysql
 
 # 创建数据库
-# db = pymysql.connect(host='localhost', user='root', password='199541466', port=3306)
+# db = pymysql.connect(host='localhost', user='root', password='', port=3306)
 # cursor = db.cursor()
 # cursor.execute('SELECT VERSION()')
 # data = cursor.fetchone()
